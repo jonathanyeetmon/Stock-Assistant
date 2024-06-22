@@ -28,13 +28,20 @@ def get_stock_indicators(driver):
     indicators = []
     time.sleep(5)
     elements = driver.find_elements(By.CSS_SELECTOR, ".cell-hvDpy38G.largePadding-hvDpy38G")
-    print(len(elements))
-    for i in range(0, len(elements),3):
-        indicators.append(elements[i:i+3])
 
-    for indicator in indicators:
-        print(indicator[0].text, indicator[1].text, indicator[2].text)
-    return indicators
+    # indicators saved in csv
+    with open('webscraper/indicators.csv', 'w', newline='', encoding='utf-8') as file:
+        writer = csv.writer(file)
+    
+        # Optionally write headers to the CSV file
+        # writer.writerow(["Header1", "Header2", "Header3"])
+        
+        # Loop through elements in steps of 3 and write to the CSV file
+        for i in range(0, len(elements), 3):
+            # Assuming elements[i], elements[i+1], and elements[i+2] exist
+            writer.writerow([elements[i].text, elements[i+1].text, elements[i+2].text])
+
+
 
 
 def scrape(ticker):
@@ -49,8 +56,8 @@ def scrape(ticker):
     # Now, you can find elements by their tag, class, id or other attributes
 
     #get stock indicators
-    indicators = get_stock_indicators(driver)
-
+    get_stock_indicators(driver)
+    
     # You can also interact with the website, click buttons, fill forms, etc.
     # button = driver.find_element(By.ID, 'submit-button')
     # button.click()
@@ -58,4 +65,4 @@ def scrape(ticker):
     # Always remember to close the driver after you're done
     driver.quit()
 
-scrape("NKE")
+scrape("AAPL")
