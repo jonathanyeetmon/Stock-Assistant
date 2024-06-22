@@ -1,0 +1,28 @@
+Name,Value,Action
+Relative Strength Index (14),61.63,Neutral
+"Stochastic %K (14, 3, 3)",66.82,Neutral
+Commodity Channel Index (20),61.85,Neutral
+Average Directional Index (14),46.07,Neutral
+Awesome Oscillator,18.42,Neutral
+Momentum (10),13.01,Sell
+"MACD Level (12, 26)",7.35,Buy
+"Stochastic RSI Fast (3, 3, 14, 14)",34.31,Neutral
+Williams Percent Range (14),−45.31,Neutral
+Bull Bear Power,6.89,Neutral
+"Ultimate Oscillator (7, 14, 28)",43.40,Neutral
+Name,Value,Action
+Exponential Moving Average (10),207.86,Sell
+Simple Moving Average (10),208.51,Sell
+Exponential Moving Average (20),202.16,Buy
+Simple Moving Average (20),200.22,Buy
+Exponential Moving Average (30),197.66,Buy
+Simple Moving Average (30),196.32,Buy
+Exponential Moving Average (50),191.93,Buy
+Simple Moving Average (50),186.81,Buy
+Exponential Moving Average (100),186.56,Buy
+Simple Moving Average (100),182.15,Buy
+Exponential Moving Average (200),182.57,Buy
+Simple Moving Average (200),182.89,Buy
+"Ichimoku Base Line (9, 26, 52, 26)",203.41,Neutral
+Volume Weighted Moving Average (20),203.83,Buy
+Hull Moving Average (9),212.42,Sell
