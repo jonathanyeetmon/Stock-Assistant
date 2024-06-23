@@ -29,7 +29,7 @@ def get_financial_sentiment(text):
         probabilities = softmax(logits, dim=1).flatten()
     
     # Since we are moving the data back to CPU for interpretation, we need to call `prob.item()`
-    sentiment_mapping = {0: "neutral", 1: "positive", 2: "negative"}
+    sentiment_mapping = {0: "positive", 1: "negative", 2: "neutral"}
     sentiment_probabilities = {sentiment_mapping[i]: prob.item() for i, prob in enumerate(probabilities.cpu())}
     
     return sentiment_probabilities

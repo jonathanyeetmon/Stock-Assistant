@@ -21,7 +21,7 @@ from model import get_financial_sentiment
 def get_stock_indicators(driver):
     wait = WebDriverWait(driver, 10)
     try:
-        button = wait.until(EC.element_to_be_clickable((By.XPATH, "/html/body/div[2]/div[6]/div/div[2]/div[1]/div[1]/div[2]/div[2]/div/div[2]/div[20]/div/button")))
+        button = wait.until(EC.element_to_be_clickable((By.XPATH, "//button[@class='button-vll9ujXF' and contains(text(), 'More technicals')]")))
     except:
         driver.quit()
     
@@ -51,29 +51,32 @@ def get_stock_indicators(driver):
 
 def get_stock_news(driver):
     try:
-        WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.CLASS_NAME, "JtKRv")))
+        WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.CSS_SELECTOR, ".clamp.svelte-w27v8j")))
         time.sleep(10)
     except:
         driver.quit()
     
-    headlines = driver.find_elements(By.CSS_SELECTOR, ".JtKRv")
+    headlines = driver.find_elements(By.CSS_SELECTOR, "p.clamp.svelte-w27v8j")
     headlines = [headline.text for headline in headlines if headline.text != '']
-    print(headlines)
     return headlines
 
-
+# Above .20 buy, below -.20 sell
 def sentiment_analysis_from_headlines(headlines):
     '''
     returns avg positive, negative, and neutral headlines, avg pos, avg, neg, avg neutral 
     '''
     dict = {}
-    #running_sum = 0
+    running_sum = 0
     for headline in headlines:
         sentiment = get_financial_sentiment(headline)
-        dict[headline] = (1*sentiment['positive']) + (-1*sentiment['negative'])
-        #running_sum += 1*sentiment['positive'] + -1*sentiment['negative']
-    #average = running_sum / len(headlines)
-    print(dict)
+        dict[headline] = (sentiment['positive'], sentiment['neutral'], sentiment['negative'])
+        running_sum += 1*sentiment['positive'] + -1*sentiment['negative']
+    average = running_sum / len(headlines)
+    print(average)
+    for headline in dict:
+        print(headline)
+        print(dict[headline])
+        print('\n')
 
 def scrape(ticker):
     # Set up the Chrome WebDriver
@@ -90,15 +93,12 @@ def scrape(ticker):
     get_stock_indicators(driver)
 
     #reset back to main page so we can get the news
-    url = "https://news.google.com/"
+    url = "https://finance.yahoo.com/quote/" + ticker + "/news/"
     driver.get(url)
     try:
-        search_bar = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.CSS_SELECTOR, ".Ax4B8.ZAGvjd")))
+        WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.CSS_SELECTOR, ".svelte-3a2v0c")))
     except:
         driver.quit()
-
-    search_bar.send_keys(ticker + " stock")
-    search_bar.send_keys(Keys.RETURN)
 
     #get stock news
     headlines = get_stock_news(driver)
@@ -114,48 +114,4 @@ scrape("AAPL")
 
 
 
-def get_google_news(ticker):
-    # Set up the Chrome driver
-    service = Service('path_to_chromedriver')  # Update this with the correct path to your ChromeDriver
-    driver = webdriver.Chrome(service=service)
-    
-    try:
-        # Open Google News
-        driver.get('https://news.google.com/')
-        
-        # Find the search box and enter the ticker
-        search_box = driver.find_element(By.NAME, 'q')
-        search_box.send_keys(ticker)
-        search_box.send_keys(Keys.RETURN)
-        
-        # Wait until the search results are loaded
-        wait = WebDriverWait(driver, 10)
-        wait.until(EC.presence_of_all_elements_located((By.CSS_SELECTOR, 'article')))
-        
-        # Find all articles
-        articles = driver.find_elements(By.CSS_SELECTOR, 'article')
-        
-        # Extract the relevant information
-        news_data = []
-        for article in articles:
-            headline_elem = article.find_element(By.CSS_SELECTOR, 'h3')
-            link_elem = article.find_element(By.CSS_SELECTOR, 'a')
-            snippet_elem = article.find_element(By.CSS_SELECTOR, 'p')
-            
-            headline = headline_elem.text if headline_elem else "No headline"
-            link = link_elem.get_attribute('href') if link_elem else "No link"
-            snippet = snippet_elem.text if snippet_elem else "No snippet"
-            
-            news_data.append({
-                'headline': headline,
-                'link': link,
-                'snippet': snippet
-            })
-        
-        # Convert to DataFrame
-        df = pd.DataFrame(news_data)
-        return df
-    
-    finally:
-        # Close the driver
-        driver.quit()
+
