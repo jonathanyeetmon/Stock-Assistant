@@ -17,6 +17,7 @@ import pandas as pd
 import time
 import json
 from model import get_financial_sentiment
+from preprocess import pre_process
 
 def get_stock_indicators(driver):
     wait = WebDriverWait(driver, 10)
@@ -108,7 +109,6 @@ def scrape(ticker):
     # Always remember to close the driver after you're done
     driver.quit()
 
-scrape("AAPL")
 
 
 

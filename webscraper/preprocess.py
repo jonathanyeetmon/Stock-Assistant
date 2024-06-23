@@ -5,4 +5,4 @@ def pre_process(ticker):
     ticker = "".join(ticker)
     return ticker
 
-print(pre_process(" a apl "))
+      
