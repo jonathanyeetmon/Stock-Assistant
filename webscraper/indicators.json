@@ -6,57 +6,57 @@
     },
     {
         "first_element": "Relative Strength Index (14)",
-        "second_element": "44.76",
+        "second_element": "61.63",
         "third_element": "Neutral"
     },
     {
         "first_element": "Stochastic %K (14, 3, 3)",
-        "second_element": "28.36",
+        "second_element": "66.82",
         "third_element": "Neutral"
     },
     {
         "first_element": "Commodity Channel Index (20)",
-        "second_element": "−138.47",
+        "second_element": "61.85",
         "third_element": "Neutral"
     },
     {
         "first_element": "Average Directional Index (14)",
-        "second_element": "14.15",
+        "second_element": "46.07",
         "third_element": "Neutral"
     },
     {
         "first_element": "Awesome Oscillator",
-        "second_element": "6.78",
+        "second_element": "18.42",
         "third_element": "Neutral"
     },
     {
         "first_element": "Momentum (10)",
-        "second_element": "−31.22",
+        "second_element": "13.01",
         "third_element": "Sell"
     },
     {
         "first_element": "MACD Level (12, 26)",
-        "second_element": "2.86",
-        "third_element": "Sell"
+        "second_element": "7.35",
+        "third_element": "Buy"
     },
     {
         "first_element": "Stochastic RSI Fast (3, 3, 14, 14)",
-        "second_element": "−0.00",
+        "second_element": "34.31",
         "third_element": "Neutral"
     },
     {
         "first_element": "Williams Percent Range (14)",
-        "second_element": "−88.05",
+        "second_element": "−45.31",
         "third_element": "Neutral"
     },
     {
         "first_element": "Bull Bear Power",
-        "second_element": "−29.24",
+        "second_element": "6.89",
         "third_element": "Neutral"
     },
     {
         "first_element": "Ultimate Oscillator (7, 14, 28)",
-        "second_element": "49.78",
+        "second_element": "43.40",
         "third_element": "Neutral"
     },
     {
@@ -66,77 +66,77 @@
     },
     {
         "first_element": "Exponential Moving Average (10)",
-        "second_element": "238.97",
+        "second_element": "207.86",
         "third_element": "Sell"
     },
     {
         "first_element": "Simple Moving Average (10)",
-        "second_element": "242.72",
+        "second_element": "208.51",
         "third_element": "Sell"
     },
     {
         "first_element": "Exponential Moving Average (20)",
-        "second_element": "237.73",
-        "third_element": "Sell"
+        "second_element": "202.16",
+        "third_element": "Buy"
     },
     {
         "first_element": "Simple Moving Average (20)",
-        "second_element": "240.51",
-        "third_element": "Sell"
+        "second_element": "200.22",
+        "third_element": "Buy"
     },
     {
         "first_element": "Exponential Moving Average (30)",
-        "second_element": "235.38",
-        "third_element": "Sell"
+        "second_element": "197.66",
+        "third_element": "Buy"
     },
     {
         "first_element": "Simple Moving Average (30)",
-        "second_element": "231.11",
-        "third_element": "Sell"
+        "second_element": "196.32",
+        "third_element": "Buy"
     },
     {
         "first_element": "Exponential Moving Average (50)",
-        "second_element": "230.49",
-        "third_element": "Sell"
+        "second_element": "191.93",
+        "third_element": "Buy"
     },
     {
         "first_element": "Simple Moving Average (50)",
-        "second_element": "228.21",
-        "third_element": "Sell"
+        "second_element": "186.81",
+        "third_element": "Buy"
     },
     {
         "first_element": "Exponential Moving Average (100)",
-        "second_element": "212.57",
+        "second_element": "186.56",
         "third_element": "Buy"
     },
     {
         "first_element": "Simple Moving Average (100)",
-        "second_element": "217.56",
+        "second_element": "182.15",
         "third_element": "Buy"
     },
     {
         "first_element": "Exponential Moving Average (200)",
-        "second_element": "178.48",
+        "second_element": "182.57",
         "third_element": "Buy"
     },
     {
         "first_element": "Simple Moving Average (200)",
-        "second_element": "163.27",
+        "second_element": "182.89",
         "third_element": "Buy"
     },
     {
         "first_element": "Ichimoku Base Line (9, 26, 52, 26)",
-        "second_element": "231.22",
+        "second_element": "203.41",
         "third_element": "Neutral"
     },
     {
         "first_element": "Volume Weighted Moving Average (20)",
-        "second_element": "240.48",
-        "third_element": "Sell"
+        "second_element": "203.83",
+        "third_element": "Buy"
     },
     {
         "first_element": "Hull Moving Average (9)",
-        "second_element": "230.73",
+        "second_element": "212.42",
         "third_element": "Sell"
     }
 ]
