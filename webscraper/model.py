@@ -11,10 +11,10 @@ else:
 # Print out the selected device
 print("Using device:", device)
 
-tokenizer = AutoTokenizer.from_pretrained("ProsusAI/finbert")
+tokenizer = AutoTokenizer.from_pretrained("finiteautomata/bertweet-base-sentiment-analysis")
 
 # Load the model and send it to the device (GPU or CPU)
-model = AutoModelForSequenceClassification.from_pretrained("ProsusAI/finbert").to(device)
+model = AutoModelForSequenceClassification.from_pretrained("finiteautomata/bertweet-base-sentiment-analysis").to(device)
 
 model.eval()
 
@@ -29,7 +29,7 @@ def get_financial_sentiment(text):
         probabilities = softmax(logits, dim=1).flatten()
     
     # Since we are moving the data back to CPU for interpretation, we need to call `prob.item()`
-    sentiment_mapping = {0: "positive", 1: "negative", 2: "neutral"}
+    sentiment_mapping = {0: "negative", 1: "neutral", 2: "positive"}
     sentiment_probabilities = {sentiment_mapping[i]: prob.item() for i, prob in enumerate(probabilities.cpu())}
     
     return sentiment_probabilities
