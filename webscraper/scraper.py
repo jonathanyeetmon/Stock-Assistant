@@ -14,7 +14,6 @@ from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
 from webdriver_manager.chrome import ChromeDriverManager
 import pandas as pd
-import time
 import json
 from .model import get_financial_sentiment
 #from .preprocess import pre_process
@@ -31,10 +30,12 @@ def get_stock_indicators(driver):
 
     # Now we need to save the elements we want to scrape to our csv
     #Oscillators
-    time.sleep(2)
+    #time.sleep(2)
+    wait.until(EC.element_to_be_clickable((By.CSS_SELECTOR, ".cell-hvDpy38G.largePadding-hvDpy38G")))
     elements = driver.find_elements(By.CSS_SELECTOR, ".cell-hvDpy38G.largePadding-hvDpy38G")
     if(elements == None):
         driver.quit()
+
 
     data = []
     for i in range(0, len(elements), 3):
@@ -50,17 +51,6 @@ def get_stock_indicators(driver):
 # Writing the list of dictionaries to a JSON file
     with open('webscraper/indicators.json', 'w', encoding='utf-8') as file:
         json.dump(data, file, ensure_ascii=False, indent=4)
-
-def get_stock_news(driver):
-    try:
-        WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.CSS_SELECTOR, ".clamp.svelte-w27v8j")))
-        time.sleep(10)
-    except:
-        driver.quit()
-    
-    headlines = driver.find_elements(By.CSS_SELECTOR, "p.clamp.svelte-w27v8j")
-    headlines = [headline.text for headline in headlines if headline.text != '']
-    return headlines
 
 # Above .20 buy, below -.20 sell
 def sentiment_analysis_from_headlines(headlines):
@@ -81,11 +71,12 @@ def sentiment_analysis_from_headlines(headlines):
         print(dict[headline])
         print('\n')
     '''
+    print(average)
     if average > 0.1:
-        #print("BUY NOW")
+        print("BUY NOW")
         return "buy"
     elif average < -0.1:
-        #print("SELL NOW")
+        print("SELL NOW")
         return "sell"
     return "hold"
 
@@ -98,21 +89,16 @@ def scrape(ticker):
     url = "https://www.tradingview.com/chart/?symbol=" + ticker
     driver.get(url)
 
-    # Now, you can find elements by their tag, class, id or other attributes
-
     #get stock indicators
     get_stock_indicators(driver)
 
-    #get stock news
-    headlines = scrape_news_data(ticker)
-    print(headlines)
-    sentiment_analysis_from_headlines(headlines)
-
-    time.sleep(5)
     # Always remember to close the driver after you're done
     driver.quit()
 
+    #get stock news
+    headlines = scrape_news_data(ticker)
 
+    sentiment_analysis_from_headlines(headlines)
 
 
 
