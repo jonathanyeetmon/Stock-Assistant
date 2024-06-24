@@ -16,8 +16,9 @@ from webdriver_manager.chrome import ChromeDriverManager
 import pandas as pd
 import time
 import json
-from model import get_financial_sentiment
-from preprocess import pre_process
+from .model import get_financial_sentiment
+#from .preprocess import pre_process
+from .newscraper import scrape_news_data
 
 def get_stock_indicators(driver):
     wait = WebDriverWait(driver, 10)
@@ -72,12 +73,21 @@ def sentiment_analysis_from_headlines(headlines):
         sentiment = get_financial_sentiment(headline)
         dict[headline] = (sentiment['positive'], sentiment['neutral'], sentiment['negative'])
         running_sum += 1*sentiment['positive'] + -1*sentiment['negative']
-    average = running_sum / len(headlines)
+    average = running_sum / len(headlines) if len(headlines) != 0 else 0
+    '''
     print(average)
     for headline in dict:
         print(headline)
         print(dict[headline])
         print('\n')
+    '''
+    if average > 0.1:
+        #print("BUY NOW")
+        return "buy"
+    elif average < -0.1:
+        #print("SELL NOW")
+        return "sell"
+    return "hold"
 
 def scrape(ticker):
     # Set up the Chrome WebDriver
@@ -93,16 +103,9 @@ def scrape(ticker):
     #get stock indicators
     get_stock_indicators(driver)
 
-    #reset back to main page so we can get the news
-    url = "https://finance.yahoo.com/quote/" + ticker + "/news/"
-    driver.get(url)
-    try:
-        WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.CSS_SELECTOR, ".svelte-3a2v0c")))
-    except:
-        driver.quit()
-
     #get stock news
-    headlines = get_stock_news(driver)
+    headlines = scrape_news_data(ticker)
+    print(headlines)
     sentiment_analysis_from_headlines(headlines)
 
     time.sleep(5)
