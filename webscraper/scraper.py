@@ -98,7 +98,7 @@ def scrape(ticker):
     #get stock news
     headlines = scrape_news_data(ticker)
 
-    sentiment_analysis_from_headlines(headlines)
+    return sentiment_analysis_from_headlines(headlines)
 
 
 

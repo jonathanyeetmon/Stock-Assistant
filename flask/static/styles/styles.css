@@ -1,0 +1,199 @@
+body {
+    margin: 0;
+    font-family: "Inter", "sans-serif";
+    background-color: rgb(0, 0, 0);
+    display: block;
+    justify-content: center; /* Centers the container horizontally */
+    height: 100vh;
+}
+
+.container {
+    text-align: center;
+    background: rgb(169, 169, 173); ;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centers child elements horizontally */
+    padding: 2rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    max-width: 400px;
+    width: 100%;
+}
+
+header h1 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: #ffffff !important;
+    
+}
+
+.back-video{
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+}   
+
+main .textbox {
+    background: #317cc8;
+    padding: 1rem;
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+    width: 100%; /* Ensures the textbox takes full width of the container */
+}
+
+main .textbox p {
+    margin: 0;
+    color: rgb(169, 169, 173); /* Changed color to white for better readability */
+    font-size: 1rem;
+    font-family: "Inter", sans-serif;
+    ;
+}
+
+.input_data {
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+
+/* Ensure the paragraph is centered within the textbox */
+.textbox p {
+    text-align: center;
+    color: rgb(169, 169, 173);
+
+}
+
+.st_eval{
+    color: white;
+    align-items: flex-start;
+    text-align: center;
+    font-family: "Manrope", "Manrope Placeholder", sans-serif !important;
+    font-weight: bolder; 
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2vw; /* Optional: Add some margin at the top */
+}
+
+form label,
+form input{
+    margin-bottom: 1vw; /* Space between elements */
+}
+
+form input {
+    width: 50%; /* Adjust width as needed */
+    padding: 0.5vw;
+}
+
+form{
+    padding: 0.5vw 1vw;
+    color: white; /* Text color */
+    border-radius: 0.25rem; /* Optional: Adjust border radius for rounded corners */
+}
+p {
+    margin: 2vw 0;
+    padding: 10vw;
+    color: rgb(255, 255, 255);
+    font-size: 1rem;
+    text-align: center;
+}
+.element {
+    align-items: center;
+    appearance: none;
+    background-attachment: scroll, scroll;
+    background-clip: padding-box, border-box;
+    background-color: rgba(0, 0, 0, 0);
+    background-image: linear-gradient(rgb(0, 0, 0), rgb(0, 0, 0)), linear-gradient(90deg, rgb(32, 28, 255) -91.5%, rgb(19, 239, 149) 80.05%);
+    background-origin: padding-box, border-box;
+    background-position-x: 0%, 0%;
+    background-position-y: 0%, 0%;
+    background-repeat: repeat, repeat;
+    background-size: auto, auto;
+    border-bottom-color: rgba(0, 0, 0, 0);
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    border-image-outset: 0;
+    border-image-repeat: stretch;
+    border-image-slice: 100%;
+    border-image-source: none;
+    border-image-width: 1;
+    border-left-color: rgba(0, 0, 0, 0);
+    border-left-style: solid;
+    border-left-width: 1px;
+    border-right-color: rgba(0, 0, 0, 0);
+    border-right-style: solid;
+    border-right-width: 1px;
+    border-top-color: rgba(0, 0, 0, 0);
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    border-top-style: solid;
+    border-top-width: 1px;
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 3px 1px -2px, rgba(0, 0, 0, 0.14) 0px 2px 2px 0px, rgba(0, 0, 0, 0.12) 0px 1px 5px 0px;
+    box-sizing: border-box;
+    color: rgb(255, 255, 255);
+    cursor: pointer;
+    display: flex;
+    filter: drop-shadow(rgba(56, 237, 172, 0.2) 10px 0px 15px) drop-shadow(rgba(150, 162, 255, 0.2) -10px 0px 15px);
+    font-family: Inter, sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    height: 38px;
+    justify-content: center;
+    line-height: 32px;
+    margin-block-end: 0px;
+    margin-block-start: 0px;
+    margin-bottom: 0px;
+    margin-left: 0px;
+    margin-right: 0px;
+    margin-top: 0px;
+    min-width: 0px;
+    outline-color: rgb(255, 255, 255);
+    outline-style: none;
+    outline-width: 0px;
+    padding-bottom: 6px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 6px;
+    position: relative;
+    text-align: left;
+    text-decoration-color: rgb(255, 255, 255);
+    text-decoration-line: none;
+    text-decoration-style: solid;
+    text-decoration-thickness: auto;
+    text-size-adjust: 100%;
+    text-transform: capitalize;
+    text-wrap: nowrap;
+    transition-behavior: normal;
+    transition-delay: 0s;
+    transition-duration: 0s;
+    transition-property: all;
+    transition-timing-function: ease;
+    user-select: none;
+    vertical-align: middle;
+    white-space-collapse: collapse;
+    width: 145.766px;
+    -webkit-box-align: center;
+    -webkit-box-pack: center;
+    -webkit-font-smoothing: antialiased;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+.element:hover {
+    background-image: linear-gradient(to right, rgb(0, 143, 193), rgb(0, 240, 153), rgb(0, 143, 193), rgb(0, 240, 153));
+    background-size: 300% 100%;
+    background-position: 0% 0%;
+    color: white; 
+}
+
+.wb{
+    color:rgb(169, 169, 173); 
+}

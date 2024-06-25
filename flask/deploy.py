@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, redirect, render_template, request, sessions, url_for
 import os
 import sys
 
@@ -10,6 +10,7 @@ if parent_dir not in sys.path:
 
 from webscraper.main import run  # Import after adding the directory to path
 app = Flask(__name__)
+app.secret_key = 'shish'  # You must set a secret key for sessions to work
 
 @app.route('/', methods=['GET'])
 def run_scraper_route():
@@ -19,10 +20,13 @@ def run_scraper_route():
     else:
         # Get input data from query string after form submission
         input_data = request.args.get('input_data')
+        #sessions['ticker'] = input_data
         # Call the run function with the input data
         result = run(input_data)
         # Instead of returning jsonify, let's return a simple response for now
-        return f"Ran with input_data: {input_data}, Result: {result}"
+        return render_template('results.html', ticker=request.args.get('input_data'), result=result)
+
+
 
 if __name__ == '__main__':
-    app.run(debug=False)
+    app.run(debug=True)
