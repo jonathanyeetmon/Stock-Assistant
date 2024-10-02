@@ -38,6 +38,4 @@ This stock assistant is a web application that combines sentiment analysis with 
 
 
 
-
-
    
