@@ -34,8 +34,4 @@ This stock assistant is a web application that combines sentiment analysis with 
 3. Run the driver
    ```bash
    python run.py
-
-
-
-
-   
+   ```
