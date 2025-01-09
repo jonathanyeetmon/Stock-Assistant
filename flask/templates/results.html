@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<head></head>
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Results</title>
@@ -8,7 +8,77 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='styles/styles.css') }}">
 </head>
 <body>
-    <h1 class="st_eval">Results for {{ ticker }}</h1>
-    <p>{{result}}</p>
+    <div class="container-sm">
+        <h1 class="st_eval mb-4">Results for {{ ticker }}</h1>
+        {% if indicators %}
+            <table class="table table-bordered table-hover mt-3">
+                <thead class="table-dark">
+                    <tr>
+                        <th>Name</th>
+                        <th>Value</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- First row: Sentiment Recommendation -->
+                    <tr class="table-dark">
+                        <td colspan="3" class="text-center">
+                            <h2 class="fw-bold text-uppercase">
+                                Sentiment Recommendation: 
+                                <span class="
+                                    {% if sentiment_recommendation.lower() == 'buy' %}
+                                        text-success
+                                    {% elif sentiment_recommendation.lower() == 'hold' %}
+                                        text-warning
+                                    {% elif sentiment_recommendation.lower() == 'sell' %}
+                                        text-danger
+                                    {% else %}
+                                        text-secondary
+                                    {% endif %}
+                                ">
+                                    {{ sentiment_recommendation }}
+                                </span>
+                            </h2>
+                        </td>
+                    </tr>
+                    <tr class="table-dark">
+                        <td colspan="3" class="text-center">
+                            <h2 class="fw-bold text-uppercase">
+                                Tech Recommendation: 
+                                <span class="
+                                    {% if tech_rec.lower() == 'buy' %}
+                                        text-success
+                                    {% elif tech_rec.lower() == 'hold' %}
+                                        text-warning
+                                    {% elif tech_rec.lower() == 'sell' %}
+                                        text-danger
+                                    {% else %}
+                                        text-secondary
+                                    {% endif %}
+                                ">
+                                    {{ tech_rec}}
+                                </span>
+                            </h2>
+                        </td>
+                    </tr>
+                    <!-- Remaining rows: Indicators -->
+                    {% for row in indicators %}
+                        <tr class="table-dark table-striped">
+                            <td>{{ row.first_element }}</td>
+                            <td>{{ row.second_element }}</td>
+                            <td>{{ row.third_element }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <p>No indicators available to display.</p>
+        {% endif %}
+    </div>
+    <form>
+    <a href="{{ url_for('run_scraper_route') }}">
+        <button class ="element" type="submit">Go Back</button>
+    </a>
+    </form>
 </body>
 </html>

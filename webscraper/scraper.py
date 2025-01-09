@@ -20,7 +20,7 @@ from .model import get_financial_sentiment
 from .newscraper import scrape_news_data
 
 def get_stock_indicators(driver):
-    wait = WebDriverWait(driver, 10)
+    wait = WebDriverWait(driver, 20)
     try:
         button = wait.until(EC.element_to_be_clickable((By.XPATH, "//button[@class='button-vll9ujXF' and contains(text(), 'More technicals')]")))
     except:
