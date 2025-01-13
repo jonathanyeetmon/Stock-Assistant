@@ -24,13 +24,13 @@ def get_stock_indicators(driver):
     try:
         button = wait.until(EC.element_to_be_clickable((By.XPATH, "//button[@class='button-vll9ujXF' and contains(text(), 'More technicals')]")))
     except:
+        print("died here")
         driver.quit()
     
     button.click()
 
-    # Now we need to save the elements we want to scrape to our csv
+    # Now we need to save the elements we want to scrape to our json
     #Oscillators
-    #time.sleep(2)
     wait.until(EC.element_to_be_clickable((By.CSS_SELECTOR, ".cell-hvDpy38G.largePadding-hvDpy38G")))
     elements = driver.find_elements(By.CSS_SELECTOR, ".cell-hvDpy38G.largePadding-hvDpy38G")
     if(elements == None):
