@@ -3,7 +3,6 @@ def count_techs(techs):
     sell = 0
     hold = 0
     for tech in techs:
-        print(tech)
         tech = tech["third_element"]
         if tech[0] == 'B':
             buy += 1
